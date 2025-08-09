@@ -6,7 +6,10 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "pybricks>=3.6.1",
-    "pybricksdev>=1.1.0",
+    "pybricksdev==1.0.0",
+    "asyncssh==2.19.0",
+    "mpy-cross-v5==1.0.2",
+    "mpy-cross-v6==1.0.2",
 ]
 [tool.pyright]
 typeCheckingMode = "basic"
