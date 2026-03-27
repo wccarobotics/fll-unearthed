@@ -8,21 +8,16 @@ def Run(
     drive_base: DriveBase, left_attachment: Motor, right_attachment: Motor
 ):
     # The main program starts here.
+    drive_base.settings(straight_speed=400)
     drive_base.use_gyro(True)
-    drive_base.settings(straight_speed=450)
-    drive_base.straight(960)
-    for count in range(9):
-        drive_base.straight(-55)
-        drive_base.straight(65)
-    drive_base.straight(-100)
+    drive_base.arc(250, angle=45)
+    drive_base.straight(30)
+    drive_base.arc(-250, angle=45)
+    drive_base.straight(450)
     drive_base.turn(-45)
-    drive_base.straight(200)
-    drive_base.turn(-45)
-    drive_base.straight(200)
-    drive_base.turn(-180)
-    drive_base.straight(330)
-    drive_base.turn(90)
-    drive_base.straight(1400)
+    drive_base.straight(100)
+    drive_base.turn(135)
+    drive_base.straight(300)
 
 
 # This code allows this program to be run directly, without the main program
