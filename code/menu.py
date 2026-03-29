@@ -1,15 +1,30 @@
 from pybricks.hubs import PrimeHub
-from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
-from pybricks.parameters import Button, Color, Direction, Port, Side, Stop, Axis
+from pybricks.pupdevices import (
+    Motor,
+    ColorSensor,
+    UltrasonicSensor,
+    ForceSensor,
+)
+from pybricks.parameters import (
+    Button,
+    Color,
+    Direction,
+    Port,
+    Side,
+    Stop,
+    Axis,
+)
 from pybricks.robotics import DriveBase
 from pybricks.tools import wait, StopWatch
 import celebrate
 
 
-import images, robot, cleanwheels, battery
+import images, robot, cleanwheels, battery, straightdemo
+
 
 def menu(programs):
     menu2(programs)
+
 
 def menu2(programs: dict[int, object]):
     print("Creating hub")
@@ -19,7 +34,8 @@ def menu2(programs: dict[int, object]):
     utilities = {
         0: cleanwheels.Run,
         1: battery.Run,
-        2: celebrate.Run
+        2: celebrate.Run,
+        3: straightdemo.Run,
     }
 
     # Since we use the center button, this sets the combo of the center and bluetooth button to stop the program
@@ -31,7 +47,7 @@ def menu2(programs: dict[int, object]):
     mode = 0
     while True:
         while mode == 0:
-            
+
             stopped = False
             pressed = hub.buttons.pressed()
             if Button.RIGHT in pressed:
@@ -40,7 +56,7 @@ def menu2(programs: dict[int, object]):
             if Button.LEFT in pressed:
                 selection -= 1
                 wait(200)
-            if (selection < 0):
+            if selection < 0:
                 selection = len(programs) - 1
             if selection > len(programs) - 1:
                 selection = 0
@@ -65,12 +81,17 @@ def menu2(programs: dict[int, object]):
                 Robot.drive_base.use_gyro(False)
 
                 wait(500)
-                
+
                 try:
                     # Set the stop button to just the center button, so we can use it to stop a running sub-program
                     # We'll catch the SystemExit exception that is raised
                     hub.system.set_stop_button([Button.CENTER])
-                    programs[selection](Robot.drive_base, Robot.left_attachment, Robot.right_attachment)
+                    programs[selection](
+                        Robot.drive_base,
+                        Robot.left_attachment,
+                        Robot.right_attachment,
+                        Robot.hub,
+                    )
                 except SystemExit:
                     Robot.drive_base.stop()
                     Robot.left_attachment.stop()
@@ -83,7 +104,14 @@ def menu2(programs: dict[int, object]):
                 Robot.right_attachment.stop()
                 selection += 1
                 if selection > len(programs) - 1 and not stopped:
-                    celebrate.Run(Robot)
+                    try:
+                        hub.system.set_stop_button([Button.CENTER])
+                        celebrate.Run(Robot)
+                    except SystemExit:
+                        wait(500)
+                    hub.system.set_stop_button(
+                        [Button.CENTER, Button.BLUETOOTH]
+                    )
             hub.display.number(selection)
             hub.light.on(Color.GREEN)
             if Button.BLUETOOTH in pressed:
@@ -98,7 +126,7 @@ def menu2(programs: dict[int, object]):
             if Button.LEFT in pressed:
                 option -= 1
                 wait(200)
-            if (option < 0):
+            if option < 0:
                 option = len(utilities) - 1
             if option > len(utilities) - 1:
                 option = 0
@@ -119,13 +147,15 @@ def menu2(programs: dict[int, object]):
             Robot.drive_base.stop()
             Robot.left_attachment.stop()
             Robot.right_attachment.stop()
-            Robot.hub.speaker.beep(1,1)
+            Robot.hub.speaker.beep(1, 1)
             if option == 0:
                 hub.display.icon(images.CLEAN_WHEELS_1)
             if option == 1:
                 hub.display.icon(images.BATTERY)
             if option == 2:
                 hub.display.icon(images.STAR)
+            if option == 3:
+                hub.display.icon(images.UP_ARROW)
             if Button.BLUETOOTH in pressed:
                 mode = 0
                 wait(500)
