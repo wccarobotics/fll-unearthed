@@ -9,7 +9,7 @@ def Run(
 ):
     # The main program starts here.
     drive_base.use_gyro(True)
-    drive_base.settings(straight_speed=450)
+    drive_base.settings(straight_speed=900)
     drive_base.straight(960)
     for count in range(9):
         drive_base.straight(-55)
