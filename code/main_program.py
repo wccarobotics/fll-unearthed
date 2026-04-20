@@ -1,6 +1,6 @@
 import menu
 
-import program1, program2, mbJehu, mbminecart, mbMapreveal, mbsurfacebrushing, mbMission6And7, crosssover, heavylifting
+import program1, program2, mbJehu, mbminecart, mbMapreveal, mbsurfacebrushing, mbMission6And7, crosssover, heavylifting, roofraising
 
 programs = {
     0: mbJehu.Run,
@@ -10,6 +10,7 @@ programs = {
     4: crosssover.Run,
     5: heavylifting.Run,
     6: mbMission6And7.Run,
+    7: roofraising.Run,
 }
 
 menu.menu(programs)

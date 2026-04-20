@@ -90,7 +90,6 @@ def menu2(programs: dict[int, object]):
                         Robot.drive_base,
                         Robot.left_attachment,
                         Robot.right_attachment,
-                        Robot.hub,
                     )
                 except SystemExit:
                     Robot.drive_base.stop()
