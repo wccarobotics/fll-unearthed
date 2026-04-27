@@ -1,0 +1,21 @@
+from pybricks.parameters import Direction, Port, Stop
+from pybricks.pupdevices import Motor
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait
+import robot
+
+
+def Run(
+    drive_base: DriveBase, left_attachment: Motor, right_attachment: Motor
+):
+    drive_base.use_gyro(True)
+    left_attachment.run_angle(900, -200)
+    left_attachment.run_angle(900, 200)
+    left_attachment.run_angle(900, -200)
+    left_attachment.run_angle(900, 200)
+
+
+# This code allows this program to be run directly, without the main program
+if __name__ == "__main__":
+    robot = robot.Robot()
+    Run(robot.drive_base, robot.left_attachment, robot.right_attachment)
