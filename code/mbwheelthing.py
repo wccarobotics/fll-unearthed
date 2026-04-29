@@ -14,10 +14,12 @@ def Run(
     hub: PrimeHub,
 ):
     drive_base.use_gyro(True)
-    left_attachment.run_angle(900, -200)
-    left_attachment.run_angle(900, 200)
-    left_attachment.run_angle(900, -200)
-    left_attachment.run_angle(900, 200)
+    drive_base.settings(straight_speed=900)
+    drive_base.straight(400)
+    for count in range(4):
+        left_attachment.run_angle(900, -200)
+        left_attachment.run_angle(900, 200)
+    drive_base.straight(-500)
 
 
 # This code allows this program to be run directly, without the main program

@@ -14,17 +14,19 @@ def Run(
 ):
     # The main program starts here.
     drive_base.use_gyro(True)
-    drive_base.settings(straight_speed=900)
+    drive_base.settings(straight_speed=600)
+    drive_base.straight(365)
+    drive_base.turn(-35)
+    drive_base.straight(-100)
+    drive_base.turn(25)
     drive_base.straight(350)
-    drive_base.turn(-45)
-    drive_base.turn(32)
-    drive_base.straight(270)
     drive_base.straight(-250)
     drive_base.straight(100)
-    drive_base.turn(75)
+    drive_base.turn(80)
     drive_base.straight(-200)
-    drive_base.turn(75)
-    drive_base.straight(500)
+    drive_base.turn(65)
+    drive_base.straight(-2000)
+    drive_base.turn(90)
 
 
 # This code allows this program to be run directly, without the main program

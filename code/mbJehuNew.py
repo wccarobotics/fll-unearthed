@@ -15,7 +15,7 @@ def Run(
     # The main program starts here.
     drive_base.use_gyro(True)
     drive_base.settings(straight_speed=600)
-    drive_base.straight(664)
+    drive_base.straight(680)
     drive_base.straight(-119)
     drive_base.straight(200)
     drive_base.settings(straight_speed=300)

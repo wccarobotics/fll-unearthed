@@ -7,10 +7,9 @@ import mbMinecartnew, mbwheelthing
 programs = [
     mbMission6And7.Run,
     heavylifting.Run,
-    liftthedoor.Run,
     mbwheelthing.Run,
-    crosssover.Run,
-    mbJehu.Run,
+    liftthedoor.Run,
+    mbJehuNew.Run,
     mbMinecartnew.Run,
 ]
 
