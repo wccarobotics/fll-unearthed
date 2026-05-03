@@ -2,7 +2,7 @@ from marcus.menu import menu
 
 import mbJehu, mbminecart, mbMapreveal, mbsurfacebrushing
 import mbMission6And7, crosssover, heavylifting, roofraising, liftthedoor, mbJehuNew
-import mbMinecartnew, mbwheelthing, mbStatue
+import mbMinecartnew, mbwheelthing, mbStatue, mbBoatFlag
 
 programs = [
     mbMission6And7.Run,
@@ -12,6 +12,7 @@ programs = [
     mbJehuNew.Run,
     mbMinecartnew.Run,
     mbStatue.Run,
+    mbBoatFlag.Run,
 ]
 
 menu(programs)
