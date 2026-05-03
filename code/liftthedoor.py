@@ -12,7 +12,6 @@ def Run(
     right_attachment: Motor,
     hub: PrimeHub,
 ):
-    # The main program starts here.
     drive_base.use_gyro(True)
     drive_base.settings(straight_speed=600)
     drive_base.straight(365)
@@ -25,8 +24,9 @@ def Run(
     drive_base.turn(80)
     drive_base.straight(-200)
     drive_base.turn(65)
-    drive_base.straight(-2000)
-    drive_base.turn(90)
+    drive_base.straight(-1100)
+    drive_base.arc(100, angle=-45)
+    drive_base.straight(-500)
 
 
 # This code allows this program to be run directly, without the main program
